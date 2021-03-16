@@ -4,16 +4,16 @@ using OpenQA.Selenium.Support.UI;
 
 namespace specflowselenium.PageObjects
 {
-    internal class HomePage
+    public class HomePage
     {
-        private IWebDriver driver;
-        private WebDriverWait wait; 
+        private IWebDriver _webDriver;
 
         public HomePage(IWebDriver driver)
         {
-            this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            _webDriver = driver;
         }
 
+        public static By linkMoreInfoBy = By.XPath("//a[contains(@href, 'example')]");
+    
     }
 }

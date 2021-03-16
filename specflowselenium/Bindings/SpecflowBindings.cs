@@ -6,6 +6,7 @@
     using OpenQA.Selenium.Firefox;
     using OpenQA.Selenium.Support.UI;
     using specflowselenium.Helper;
+    using specflowselenium.PageObjects;
     using System;
     using TechTalk.SpecFlow;
 
@@ -34,18 +35,16 @@
         [When(@"I click on the '(.*)'")]
         public void WhenIClickOnThe(string buttonname)
         {
-            const string button = "//a[contains(@href, 'example')]";
-            // TODO move to page objects
-            OpenQA.Selenium.IWebElement element = Driver.FindElement(By.XPath(button));
-            const int DefaultTimeoutInSec = 5;
-            ElementHelper.WaitUntilElementIsVisible(Driver, By.XPath(button), DefaultTimeoutInSec);
+            OpenQA.Selenium.IWebElement element = Driver.FindElement(HomePage.linkMoreInfoBy);
+            ElementHelper.WaitUntilElementIsVisible(Driver, HomePage.linkMoreInfoBy, 5);
             element.Click();
         }
+
         [Then(@"a link with text '(.*)' must be present")]
         public void ThenALinkWithTextMustBePresent(string linkText)
         {
-            var bylink = By.XPath($"//a[contains(.,'{linkText}')]");
-            OpenQA.Selenium.IWebElement element = Driver.FindElement(bylink);
+            var linkBy = By.XPath($"//a[contains(.,'{linkText}')]");
+            OpenQA.Selenium.IWebElement element = Driver.FindElement(linkBy);
             var isVisible = ElementHelper.IsElementClickable(element);
             Assert.IsTrue(isVisible, $"Element {linkText} is not visible");
         }
