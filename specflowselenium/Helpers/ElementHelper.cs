@@ -7,6 +7,9 @@ namespace specflowselenium.Helper
 {
     internal class ElementHelper
     {
+        /** Check is element clickable means is it displayed and is it enabled
+         * Returns false if element is not clickable
+         **/ 
         public static bool IsElementClickable(IWebElement element)
         {
             try
@@ -21,6 +24,9 @@ namespace specflowselenium.Helper
             }
         }
 
+        /** Smart wait until element is found
+         * Returns null if element is element is not found or IWebElement
+         **/
         public static IWebElement WaitUntilElementIsVisible(IWebDriver driver, By by, int timeoutInSeconds)
         {
             if (timeoutInSeconds > 0)
