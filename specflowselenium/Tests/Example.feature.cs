@@ -118,7 +118,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 10
  testRunner.And("I navigate to \'http://example.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
- testRunner.And("I click on the \'More information...\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I click on the link with text \'More information...\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
  testRunner.Then("a link with text \'RFC 2606\' must be present", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 13

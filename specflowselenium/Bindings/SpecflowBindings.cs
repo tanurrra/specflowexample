@@ -21,7 +21,7 @@
             var options = new FirefoxOptions
             {
                 // put path to firefox.exe here
-                BrowserExecutableLocation = "C:\\Users\\tvelik\\AppData\\Local\\Mozilla Firefox\\firefox.exe"
+                BrowserExecutableLocation = "C:\\Mozilla Firefox\\firefox.exe"
             };
             Driver = new FirefoxDriver(options);
         }
@@ -32,30 +32,27 @@
             Driver.Navigate().GoToUrl(Url);
         }
 
-        [When(@"I click on the '(.*)'")]
-        public void WhenIClickOnThe(string buttonname)
+        [When(@"I click on the link with text '(.*)'")]
+        public void WhenIClickOnThe(string linkText)
         {
-            OpenQA.Selenium.IWebElement element = Driver.FindElement(HomePage.linkMoreInfoBy);
-            ElementHelper.WaitUntilElementIsVisible(Driver, HomePage.linkMoreInfoBy, 5);
+            OpenQA.Selenium.IWebElement element = ElementHelper.WaitUntilElementIsVisible(Driver, HomePage.linkByText(linkText), 5);
             element.Click();
         }
 
         [Then(@"a link with text '(.*)' must be present")]
         public void ThenALinkWithTextMustBePresent(string linkText)
         {
-            var linkBy = By.XPath($"//a[contains(.,'{linkText}')]");
-            OpenQA.Selenium.IWebElement element = Driver.FindElement(linkBy);
+            OpenQA.Selenium.IWebElement element = Driver.FindElement(DomainsPage.linkByText(linkText));
             var isVisible = ElementHelper.IsElementClickable(element);
-            Assert.IsTrue(isVisible, $"Element {linkText} is not visible");
+            Assert.IsTrue(isVisible, $"Link with text '{linkText}' is not visible");
         }
 
         [Then(@"the '(.*)' box must contain '(.*)' at index '(.*)'")]
         public void ThenTheBoxMustContainAtIndex(string elementText, string text, int index)
         {
-            var bylink = By.XPath($"//h2[contains(., '{elementText}')]/parent::div//li[{index}]//a[contains(.,'{text}')]");
-            OpenQA.Selenium.IWebElement element = ElementHelper.WaitUntilElementIsVisible(Driver, bylink, 5);
-            var isVisible = ElementHelper.IsElementClickable(element);
-            Assert.IsTrue(isVisible, $"Element {elementText} with index {index} does not contain text {text}");
+            OpenQA.Selenium.IWebElement element = ElementHelper.WaitUntilElementIsVisible(Driver, DomainsPage.linkByElementAndIndexAndText(elementText, index, text), 5);
+            var isVisibleAndClickable = ElementHelper.IsElementClickable(element);
+            Assert.IsTrue(isVisibleAndClickable, $"Element {elementText} with index {index} does not contain text {text}");
         }
 
         [AfterScenario]

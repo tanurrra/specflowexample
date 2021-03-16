@@ -99,6 +99,7 @@
     <Compile Include="Bindings\SpecflowBindings.cs" />
     <Compile Include="Helper\ElementHelper.cs" />
     <Compile Include="PageObjects\DomainsPage.cs" />
+    <Compile Include="Helper\FuncFindXpath.cs" />
     <Compile Include="PageObjects\HomePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
