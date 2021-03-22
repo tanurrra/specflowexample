@@ -18,11 +18,11 @@
             var options = new FirefoxOptions
             {
                 // put path to firefox.exe here
-                BrowserExecutableLocation = "C:\\Mozilla Firefox\\firefox.exe"
+                BrowserExecutableLocation = "C:\\Users\\tvelik\\AppData\\Local\\Mozilla Firefox\\firefox.exe"
             };
             Driver = new FirefoxDriver(options);
         }
-
+          
         [When(@"I navigate to '(.*)'")]
         public void WhenINavigateToHttpExample_Com(string Url)
         {

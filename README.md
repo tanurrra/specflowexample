@@ -5,7 +5,7 @@ Project contains initial setup for Selenium + Specflow + C# and two test cases:
 	1. `CheckBrowser` to ensure the browser starts.
     2. `FinishMe` to go to http://example.com', click link 'More' and check few elements.
 
-Used POM pattern, smart waits, support for selectors containing variables for better flexibility.
+Used POM pattern, smart waits, support for selectors containing variables for better flexibility. Steps could be reused.
 
 ## Assumptions
 1. Elements on the pages take time before they are loaded into the DOM and/or become visible.

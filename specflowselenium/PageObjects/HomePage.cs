@@ -6,6 +6,6 @@ namespace specflowselenium.PageObjects
 {
     public class HomePage
     {
-        public static Func1<string> linkByText = (string linkText) => By.XPath($"//a[contains(.,'{linkText}')]");
+        public static Func<string> linkByText = (string linkText) => By.XPath($"//a[contains(.,'{linkText}')]");
     }
 }
